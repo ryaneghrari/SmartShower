@@ -1,0 +1,56 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "",
+      "was_cloned": false,
+      "merge": {
+        "manifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "ask-custom-Shower-default"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ryaneghrari": {
+      "skill_id": "amzn1.ask.skill.0dedc775-6d33-4787-95b2-dc3db3420b57",
+      "was_cloned": false,
+      "merge": {
+        "manifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "ask-custom-Shower-ryaneghrari"
+              }
+            }
+          }
+        }
+      },
+      "resources": {
+        "manifest": {
+          "eTag": "01b2058e38364f7a6924530696d18189"
+        },
+        "interactionModel": {
+          "en-US": {
+            "eTag": "07e6f20da50ea1e076965fb1ef92de4b"
+          }
+        },
+        "lambda": [
+          {
+            "arn": "arn:aws:lambda:us-east-1:901882909685:function:ask-custom-Shower-ryaneghrari",
+            "functionName": "ask-custom-Shower-ryaneghrari",
+            "awsRegion": "us-east-1",
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "revisionId": "c40ca726-71b0-40d6-b8d3-cbf50050d68e"
+          }
+        ]
+      },
+      "in_skill_products": []
+    }
+  }
+}

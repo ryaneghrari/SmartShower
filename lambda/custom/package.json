@@ -1,0 +1,19 @@
+{
+  "name": "smart_shower",
+  "version": "1.0.0",
+  "description": "lil app to help you shower",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ask-sdk-core": "^2.0.0",
+    "ask-sdk-dynamodb-persistence-adapter": "^2.0.7",
+    "ask-sdk-model": "^1.0.0",
+    "dynasty": "^0.3.9",
+    "mongoose": "^5.2.4"
+  }
+}

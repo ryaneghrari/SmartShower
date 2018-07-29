@@ -1,0 +1,59 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "smart shower",
+      "types": [
+
+      ],
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+
+          ]
+        },
+        {
+          "name": "StartShowerIntent",
+          "slots": [
+
+          ],
+          "samples": [
+            "I am going in the shower",
+            "Im going in the shower",
+            "Im going to shower",
+            "Im starting a shower",
+            "check my shower",
+            "showering" ,
+            "shower",
+            "watch my shower"
+          ]
+        },
+        {
+          "name": "LastShowerIntent",
+          "slots": [
+
+          ],
+          "samples": [
+            "When was the last time I showered",
+            "My last shower",
+            "Last shower",
+            "When was my last shower",
+            "Did I shower recently"
+          ]
+        }
+      ]
+    }
+  }
+}
