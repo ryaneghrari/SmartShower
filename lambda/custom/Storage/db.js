@@ -25,7 +25,7 @@ async function connectTo(dbname){
 
     mongoose.connect(url, options,function(err){
       if(err){
-        console.error(err)
+        console.error("ERROR in db.js",err)
         console.error('Error mongoose could not connect to \'%s\' db',dbname)
         reject(err)
       }

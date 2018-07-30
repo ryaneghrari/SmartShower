@@ -24,7 +24,7 @@ async function connect(){
 		return db;
 	}
 	catch(e){
-		console.error(e);
+		console.error("Error in UserTest",e);
 		return null;
 	}
 
@@ -46,9 +46,22 @@ async function create(id){
     }
 
 
-    var promise = User.update({_id:id},newUser,{upsert:true}).exec();
+      console.log("before update")
+      let res = User.update({_id:id},newUser,{upsert:true}).lean().exec();
 
-    return promise;
+      res.then(function(u){
+        console.log("after update",u)
+        resolve(u);
+      }).catch(function(e){
+        console.log("Error in UserTest",e)
+        reject(e)
+      })
+
+
+
+
+
+
 
     //Create new User
     // User.findByIdAndUpdate(id,newUser,{upsert: true}).lean().exec(function(e,u){

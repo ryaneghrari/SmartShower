@@ -35,12 +35,23 @@ var User = mongoose.model('User', userSchema, 'users');
 function find(id) {
   return new Promise((resolve, reject) => {
 
+		if(mongoose.connection.readyState !== 1){
+      console.error("not connected to db")
+      reject()
+    }
+
     User.findOne({_id: id}).lean().exec(function(e,user){
       if(e){
+
         console.error("unable to get user data")
         reject(e);
       }
       else{
+
+				//might not want to do this if I'm going to make multiple requests
+				//per handler
+				mongoose.disconnect()
+
         //user
         resolve(user)
       }
@@ -55,19 +66,30 @@ function create(id) {
 
   return new Promise((resolve, reject) => {
 
+		if(mongoose.connection.readyState !== 1){
+      console.error("not connected to db")
+      reject()
+    }
+
     let newUser = {
-      _id: id,
-      showers: []
+      _id: id
     }
     console.log("creating user")
+
     //Create new User
-    User.findByIdAndUpdate(id,newUser,{upsert: true}).lean().exec(function(e,u){
+    User.update({_id:id},newUser,{upsert: true}).lean().exec(function(e,u){
 
       if(e){
         console.error("unable to save new user");
+
         reject(e);
       }
       else{
+
+				//might not want to do this if I'm going to make multiple requests
+				//per handler
+				mongoose.disconnect()
+
         console.log("saved new user",u)
         resolve(u);
       }
@@ -82,6 +104,11 @@ function create(id) {
 function updateShower(id, newShower) {
   return new Promise((resolve, reject) => {
 
+		if(mongoose.connection.readyState !== 1){
+      console.error("not connected to db")
+      reject()
+    }
+
     console.log("updating: ", id, "with newShower: ", newShower);
     //update Shower Data
     User.findByIdAndUpdate(id,{ $push: { showers : newShower } }).exec(function(e,u){
@@ -91,6 +118,11 @@ function updateShower(id, newShower) {
         reject(e);
       }
       else{
+
+				//might not want to do this if I'm going to make multiple requests
+				//per handler
+				mongoose.disconnect()
+
         console.log(u)
         resolve(u)
       }
@@ -103,6 +135,11 @@ function updateShower(id, newShower) {
 
 function getLastShower(id) {
   return new Promise( (resolve, reject) => {
+
+		if(mongoose.connection.readyState !== 1){
+      console.error("not connected to db")
+      reject()
+    }
 
     console.log("Get Last shower for : ", id);
     //update Shower Data
@@ -122,6 +159,7 @@ function getLastShower(id) {
 							var date = new Date(u.showers[0].date);
 
 							if(date){
+
 								resolve(date)
 							}
 							else{
