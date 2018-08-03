@@ -11,6 +11,7 @@ const handler = {
     const userId = handlerInput.requestEnvelope.session.user.userId;
 
     try{
+    
       var User = await require("../Storage/User.js");
 
       var lastShower = await User.getLastShower(userId);

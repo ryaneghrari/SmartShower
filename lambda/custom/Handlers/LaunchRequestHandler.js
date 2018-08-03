@@ -11,16 +11,28 @@ const LaunchRequestHandler = {
 
 
 
-    console.log("started")
+
     try{
 
 
       const userId = handlerInput.requestEnvelope.session.user.userId;
-      const User = await require("../Storage/User.js");
+
+      console.log("started");
+      const User = await require("../Storage/UserDynamoDB.js");
       //console.log(User)
       console.log("loaded UserTest.js");
 
-      var result = await User.create(userId);
+      //var result = await User.create(userId);
+      //var user1  = await User.update(userId);
+      // let shower1 = await User.createNewShower(userId,'1');
+      // let shower2 = await User.createNewShower(userId,'2');
+      // let shower3 = await User.createNewShower(userId,'3');
+      // let lastShower = await User.getLastShower(userId);
+
+      // console.log(shower1);
+      // console.log(shower2);
+      // console.log(shower3);
+      //console.log(lastShower);
 
 
       console.log("loaded Created User");
@@ -39,7 +51,7 @@ const LaunchRequestHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      // .withShouldEndSession(true)
+      .withShouldEndSession(true)
       .withSimpleCard('Smart Shower', speechText)
       .getResponse();
 
