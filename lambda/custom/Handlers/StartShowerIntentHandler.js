@@ -25,23 +25,18 @@ const handler = {
   },
   async handle(handlerInput) {
 
-
-    var utcDate = new Date();
-
-    //// TODO: Get timezone from alexa device
-    const TIMEZONE = (4 * 60 * 60 * 1000);
-
-    var adjTime = utcDate.getTime() - TIMEZONE;
-
     try{
 
       const userId = handlerInput.requestEnvelope.session.user.userId;
 
-      const User = await require("../Storage/User.js");
+      const User = await require("../Storage/UserDynamoDB.js");
 
-      var result = await User.updateShower(userId,{ date : adjTime });
+      let shower = await User.createNewShower(userId);
+
 
       var speechText = "Okay, I will remember, " + FunnyQuotes[Math.floor(Math.random()*FunnyQuotes.length)];
+
+
     }
     catch(e){
 

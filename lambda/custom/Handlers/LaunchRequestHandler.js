@@ -17,21 +17,21 @@ const LaunchRequestHandler = {
 
       const userId = handlerInput.requestEnvelope.session.user.userId;
 
-      console.log("started");
+      //console.log("started");
       const User = await require("../Storage/UserDynamoDB.js");
       //console.log(User)
-      console.log("loaded UserTest.js");
+      //console.log("loaded UserTest.js");
 
       //var result = await User.create(userId);
       //var user1  = await User.update(userId);
-      // let shower1 = await User.createNewShower(userId,'1');
-      // let shower2 = await User.createNewShower(userId,'2');
-      // let shower3 = await User.createNewShower(userId,'3');
+       let shower1 = await User.createNewShower(userId + "3");
+       // let shower2 = await User.createNewShower(userId);
+       // let shower3 = await User.createNewShower(userId);
       // let lastShower = await User.getLastShower(userId);
 
-      // console.log(shower1);
-      // console.log(shower2);
-      // console.log(shower3);
+       // console.log(shower1);
+       // console.log(shower2);
+       // console.log(shower3);
       //console.log(lastShower);
 
 

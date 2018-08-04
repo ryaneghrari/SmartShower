@@ -11,25 +11,26 @@ const handler = {
     const userId = handlerInput.requestEnvelope.session.user.userId;
 
     try{
-    
-      var User = await require("../Storage/User.js");
+
+      var User = await require("../Storage/UserDynamoDB.js");
 
       var lastShower = await User.getLastShower(userId);
 
+      console.log(lastShower)
 
-      if(lastShower === "0 showers"){
+      if(lastShower === "no showers"){
         var speechText = "I do not have any history of you showering.  You can tell me you are going in the shower and I will remember."
       }
+      else if(lastShower === "error"){
+        var speechText = "I'm not sure something went wrong."
+      }
       else{
-        //// TODO: Get timezone from alexa device
-        const TIMEZONE = (4 * 60 * 60 * 1000);
-
+        
         const now = new Date();
-        const adjNow = (now.getTime()) - TIMEZONE;
 
-        const diff = adjNow - lastShower.getTime();
+        const diff = now.getTime() - lastShower.getTime();
 
-        var speechText = getResponse(diff)
+        var speechText = getResponse(diff);
       }
 
     }
