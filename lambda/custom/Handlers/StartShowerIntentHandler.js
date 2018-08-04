@@ -29,10 +29,9 @@ const handler = {
 
       const userId = handlerInput.requestEnvelope.session.user.userId;
 
-      const User = await require("../Storage/UserDynamoDB.js");
+      const User = await require("../Storage/User.js");
 
       let shower = await User.createNewShower(userId);
-
 
       var speechText = "Okay, I will remember, " + FunnyQuotes[Math.floor(Math.random()*FunnyQuotes.length)];
 

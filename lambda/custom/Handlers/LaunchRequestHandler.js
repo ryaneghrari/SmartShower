@@ -1,41 +1,17 @@
 /* eslint-disable  func-names */
 /* eslint-disable  no-console */
 
-//var User = require("../Storage/User.js");
-
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   async handle(handlerInput) {
 
-
-
-
     try{
-
 
       const userId = handlerInput.requestEnvelope.session.user.userId;
 
-      //console.log("started");
-      const User = await require("../Storage/UserDynamoDB.js");
-      //console.log(User)
-      //console.log("loaded UserTest.js");
-
-      //var result = await User.create(userId);
-      //var user1  = await User.update(userId);
-       let shower1 = await User.createNewShower(userId + "3");
-       // let shower2 = await User.createNewShower(userId);
-       // let shower3 = await User.createNewShower(userId);
-      // let lastShower = await User.getLastShower(userId);
-
-       // console.log(shower1);
-       // console.log(shower2);
-       // console.log(shower3);
-      //console.log(lastShower);
-
-
-      console.log("loaded Created User");
+      const User = await require("../Storage/User.js");
 
       var speechText = "Welcome to smart shower! Just tell me when \
       you are going in the shower and I'll remember.  Or ask when when you last showered.";

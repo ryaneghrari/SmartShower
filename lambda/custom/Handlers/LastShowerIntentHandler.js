@@ -12,11 +12,11 @@ const handler = {
 
     try{
 
-      var User = await require("../Storage/UserDynamoDB.js");
+      var User = await require("../Storage/User.js");
 
       var lastShower = await User.getLastShower(userId);
 
-      console.log(lastShower)
+      //console.log(lastShower)
 
       if(lastShower === "no showers"){
         var speechText = "I do not have any history of you showering.  You can tell me you are going in the shower and I will remember."
@@ -25,12 +25,12 @@ const handler = {
         var speechText = "I'm not sure something went wrong."
       }
       else{
-        
+
         const now = new Date();
 
         const diff = now.getTime() - lastShower.getTime();
 
-        var speechText = getResponse(diff);
+        var speechText = LS_getResponse(diff);
       }
 
     }
@@ -51,7 +51,7 @@ const handler = {
   }
 };
 
-function getResponse(msDiff){
+function LS_getResponse(msDiff){
   var secDiff = msDiff / 1000;
   var minDiff = secDiff / 60;
   var hourDiff = minDiff / 60;
